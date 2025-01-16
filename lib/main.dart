@@ -1,6 +1,14 @@
+import 'package:api_integretion/api_services.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  var result = await ApiServices.getUsers();
+
+  if (result != null && result['error'] == null) {
+    print('User data: ${result['data']}');
+  } else {
+    print('Error: ${result['error']}');
+  }
   runApp(const MyApp());
 }
 
